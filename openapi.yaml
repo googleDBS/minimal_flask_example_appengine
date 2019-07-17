@@ -1,17 +1,23 @@
 openapi: "3.0.0"
 
 info:
-  title: "Useless sample api"
-  description: "A simple api that returns a 200 if you ping it."
+  title: "Package name extractor"
+  description: "API that accepts an image of a bear and returns a prediction"
   version: "1.0"
 
 paths:
-  /ping:
-    get:
+  /predictimage:
+    post:
+      description: "Predict image class as one grizzly bear, black bear, or teddy bear"
+
+      requestBody:
+        description: "Json with single field containing image url to download image"
+        required: true
+        content:
+          application/json: {}
+
       responses:
         '200':
-          description: OK
-          content:
-            text/plain:
-              schema:
-                type: string
+          description: "Returns the prediction of the image"
+          content: 
+           application/json: {}
