@@ -10,20 +10,19 @@ def load_model():
 
     return learn
 
-def load_image():
-    # Location of bucket with image
-    path = Path('images')
-    url = path/'bear.jpg'
+# def load_image():
+#     # Location of bucket with image
+#     path = Path('images')
+#     url = path/'bear.jpg'
 
-    # Download Image
-    img = open_image(url)
+#     # Download Image
+#     img = open_image(url)
 
-    return img
+#     return img
 def predict_image(img):
     learn = load_model()
+
     # Return Prediction
     pred_class,pred_idx,outputs = learn.predict(img)
 
     return pred_class
-
-print(predict_image(load_image()))

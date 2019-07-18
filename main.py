@@ -1,6 +1,6 @@
 import json
 from flask import Flask, request
-#from serve import get_keywords_api
+from serve import predict_image
 # I've commented out the last import because it won't work in kernels, 
 # but you should uncomment it when we build our app tomorrow
 
@@ -8,7 +8,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 # load our pre-trained model & function
-keywords_api = get_keywords_api()
+image_api = predict_image()
 
 # Define a post method for our API.
 @app.route('/predictimage', methods=['POST'])
@@ -21,7 +21,7 @@ def predictimage():
     input_data = request.json
 
     # use our API function to get the keywords
-    output_data = keywords_api(input_data)
+    output_data = image_api(input_data)
 
     # convert our dictionary into a .json file
     # (returning a dictionary wouldn't be very
